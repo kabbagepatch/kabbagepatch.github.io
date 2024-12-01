@@ -1,7 +1,7 @@
 <template>
   <div class="books-container">
     <h2 class="subtext">Yearly Target: 52 Books</h2>
-    <p class="subtext">Blog: <a href="https://kavishandbooks.wordpress.com/" target="_blank">Kavish and Books</a></p>
+    <p class="subtext">Old Blog: <a href="https://kavishandbooks.wordpress.com/" target="_blank">Kavish and Books</a></p>
     <BookSection
       v-for="(booksList, index) in books.slice().reverse()"
       :key="2017 + books.length - 1 - index"
@@ -11,41 +11,12 @@
       :apiKey="apiKey"
       :initialShowBooks="index == 0"
     />
-    <!-- <BookSection
-      :year="'2021'"
-      :bookCount="'(' + bookNames2021.length + '/52)'"
-      :books="bookNames2021"
-      :apiKey="apiKey"
-    />
-    <BookSection
-      :year="'2020'"
-      :bookCount="'(' + bookNames2020.length + '/52)'"
-      :books="bookNames2020"
-      :apiKey="apiKey"
-    />
-    <BookSection
-      :year="'2019'"
-      :bookCount="'(' + bookNames2019.length + '/52)'"
-      :books="bookNames2019"
-      :apiKey="apiKey"
-    />
-    <BookSection
-      :year="'2018'"
-      :bookCount="'(' + bookNames2018.length + '/52)'"
-      :books="bookNames2018"
-      :apiKey="apiKey"
-    />
-    <BookSection
-      :year="'2017'"
-      :bookCount="'(' + bookNames2017.length + '/52)'"
-      :books="bookNames2017"
-      :apiKey="apiKey"
-    /> -->
   </div>
 </template>
 
 <script>
 import BookSection from '../components/Books/BookSection.vue';
+import bookList2024 from '../resources/books/bookList2024.txt';
 import bookList2023 from '../resources/books/bookList2023.txt';
 import bookList2022 from '../resources/books/bookList2022.txt';
 import bookList2021 from '../resources/books/bookList2021.txt';
@@ -76,6 +47,7 @@ export default {
       bookList2021.split('\n'),
       bookList2022.split('\n'),
       bookList2023.split('\n'),
+      bookList2024.split('\n'),
     ];
   },
 };

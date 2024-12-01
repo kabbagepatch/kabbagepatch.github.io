@@ -9,7 +9,8 @@
           <h2>Reading since 2017</h2>
           <h2>Blogged between 2018-2020</h2>
           <h2>Gaming since 2020</h2>
-          <h2>Cat-Dad since 2021</h2>
+          <h2>Have a Cat since 2021</h2>
+          <h2>Drawing since 2023</h2>
         </div>
       </div>
     </div>
@@ -78,7 +79,7 @@ export default {
   color: hsl(335, 99%, 68%);
 }
 
-.about h2:nth-child(3), .about h2:nth-child(5) {
+.about h2:nth-child(3), .about h2:nth-child(5), .about h2:nth-child(7) {
   margin-left: 350px;
 }
 

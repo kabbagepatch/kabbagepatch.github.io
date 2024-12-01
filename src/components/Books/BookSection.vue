@@ -34,7 +34,7 @@ export default {
   name: 'BookSection',
   props: {
     bookCount: String,
-    year: String,
+    year: Number,
     books: Array,
     initialShowBooks: {
       type: Boolean,
