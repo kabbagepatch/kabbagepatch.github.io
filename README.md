@@ -1,4 +1,4 @@
-# Kavisherlock.Github.io
+# kabbagepatch.github.io
 
 My personal website made using Vue.js
 

@@ -35,7 +35,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .header {
   padding-bottom: 20px;
@@ -47,6 +46,7 @@ export default {
   margin: 0;
   display: inline;
   padding: 20px;
+  padding-left: 10px;
 }
 
 #title a {

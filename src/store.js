@@ -20,6 +20,9 @@ export default new Vuex.Store({
 
     // Books
     bookMap: {},
+
+    // Work
+    repos: [],
   },
   mutations: {
     // Home Canvas Grid
@@ -63,9 +66,15 @@ export default new Vuex.Store({
       const { bookName, title, imageLink } = data;
       state.bookMap[bookName] = { title, imageLink };
     },
+
+    // Work
+    updateRepos(state, data) {
+      state.repos = data.repos;
+    },
   },
   getters: {
     grid: (state) => state.grid,
     bookMap: (state) => state.bookMap,
+    repos: (state) => state.repos,
   },
 });

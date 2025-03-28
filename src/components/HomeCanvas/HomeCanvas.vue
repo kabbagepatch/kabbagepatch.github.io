@@ -105,7 +105,7 @@ export default {
     },
 
     startMessage() {
-      const message = 'sup nerd'.split('');
+      const message = 'omg hey'.split('');
       if (message[this.startMessageIndex].match(/[a-z]/i) || message[this.startMessageIndex].match(/[0-9]/i)) {
         this.renderLetter(message[this.startMessageIndex]);
       }

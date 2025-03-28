@@ -16,6 +16,7 @@
 
 <script>
 import BookSection from '../components/Books/BookSection.vue';
+import bookList2025 from '../resources/books/bookList2025.txt';
 import bookList2024 from '../resources/books/bookList2024.txt';
 import bookList2023 from '../resources/books/bookList2023.txt';
 import bookList2022 from '../resources/books/bookList2022.txt';
@@ -48,12 +49,12 @@ export default {
       bookList2022.split('\n'),
       bookList2023.split('\n'),
       bookList2024.split('\n'),
+      bookList2025.split('\n'),
     ];
   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .books-container {
   text-align: center;

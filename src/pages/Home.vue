@@ -7,10 +7,10 @@
           <h1>About Me</h1>
           <h2>Software Engineer since 2016</h2>
           <h2>Reading since 2017</h2>
-          <h2>Blogged between 2018-2020</h2>
+          <h2>Blogging since 2018 <span class='subtext'>(on hiatus)</span></h2>
           <h2>Gaming since 2020</h2>
           <h2>Have a Cat since 2021</h2>
-          <h2>Drawing since 2023</h2>
+          <h2>Watercoloring since 2023</h2>
         </div>
       </div>
     </div>
@@ -28,7 +28,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .content {
   text-align: center;
@@ -77,6 +76,10 @@ export default {
   margin-left: 250px;
   width: 350px;
   color: hsl(335, 99%, 68%);
+}
+
+.subtext {
+  font-size: 12px;
 }
 
 .about h2:nth-child(3), .about h2:nth-child(5), .about h2:nth-child(7) {

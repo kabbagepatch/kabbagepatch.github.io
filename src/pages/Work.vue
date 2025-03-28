@@ -1,82 +1,103 @@
 <template>
   <div class="worklist">
     <div class="github">
-      Projects Available at <a href="https://github.com/kavisherlock" taget="_blank">https://github.com/kavisherlock</a>
+      Projects Available at <a href="https://github.com/kabbagepatch" taget="_blank">https://github.com/kabbagepatch</a>
     </div>
-    <section>
-      <h3>Personal Website (You are here)</h3>
-      <Repo
+    <repo-section title="Personal Website (You are here)">
+      <repo
         class="repo"
-        :repo="myRepos.filter(repo => repo.name.toLowerCase().includes('kavisherlock.github.io'))[0]"
+        :repo="myRepos.filter(repo => repo.name.toLowerCase().includes('kabbagepatch.github.io'))[0]"
       />
-    </section>
-    <hr /><br />
-    <section>
-      <h3>Chess and AI</h3>
-      <Repo
+    </repo-section>
+    <repo-section title="Games">
+      <repo
+        class="repo"
+        v-for="(repo, index) in myRepos.filter(repo => repo.name.toLowerCase().includes('game'))"
+        :key="'game' + index"
+        :repo="repo"
+      />
+    </repo-section>
+    <repo-section title="KaviBot">
+      <repo
+        class="repo"
+        v-for="(repo, index) in myRepos.filter(repo => repo.name.toLowerCase().includes('kavi')
+         && repo.name.toLowerCase().includes('bot'))"
+        :key="'bot' + index"
+        :repo="repo"
+      />
+    </repo-section>
+    <repo-section title="Trackers">
+      <repo
+        class="repo"
+        v-for="(repo, index) in myRepos.filter(repo => repo.name.toLowerCase().includes('tracker'))"
+        :key="'tracker' + index"
+        :repo="repo"
+      />
+    </repo-section>
+    <repo-section title="Other">
+      <repo
+        class="repo"
+        :repo="myRepos.filter(repo => repo.name.toLowerCase().includes('hex-to-hsl'))[0]"
+      />
+      <repo
+        class="repo"
+        :repo="myRepos.filter(repo => repo.name.toLowerCase().includes('jumptorecipe'))[0]"
+      />
+    </repo-section>
+    <repo-section title="Old Projects">
+      <h3>Machine Learning</h3>
+      <repo
         class="repo"
         :repo="myRepos.filter(repo => repo.name.toLowerCase().includes('smart-chess'))[0]"
       />
-      <Repo
+      <repo
         class="repo"
         :repo="myRepos.filter(repo => repo.name.toLowerCase().includes('chessengine'))[0]"
       />
-    </section>
-    <hr /><br />
-    <section>
-      <h3>Blackjack and AI</h3>
-      <Repo
+      <repo
         class="repo"
         :repo="myRepos.filter(repo => repo.name.toLowerCase().includes('blackjack'))[0]"
       />
-    </section>
-    <hr /><br />
-    <section>
       <h3>College Projects</h3>
-      <Repo
+      <repo
         class="repo"
         :repo="{name: 'Emot', description: 'Research project under Bretl Research Group. Implemented interface to control SMA \
         wires and receive input from various motion and proximity sensors using an Android smartphone and an Arduino. Worked \
         on making the actuators faster by designing a control system to handle current passing through the SMA'}"
       />
-      <Repo
+      <repo
         class="repo"
         :repo="myRepos.filter(repo => repo.name.toLowerCase().includes('prediction'))[0]"
       />
-    </section>
-    <hr /><br />
-    <section>
       <h3>Playgrounds</h3>
       <p>Playgrounds are my way to learn various concepts or technologies by applying them
         in different ways without any specific goal in mind</p>
-      <Repo
+      <repo
         class="repo"
         v-for="(repo, index) in myRepos.filter(repo => repo.name.toLowerCase().includes('playground'))"
-        :key="index"
+        :key="'play' + index"
         :repo="repo"
       />
-    </section>
-    <hr /><br />
-    <section>
       <h3>Clones</h3>
       <p>Clones are my way to learn different development frameworks with a specific app to build</p>
-      <Repo
+      <repo
         class="repo"
         v-for="(repo, index) in myRepos.filter(repo => repo.name.toLowerCase().includes('clone')
           || repo.name.toLowerCase().includes('client'))"
-        :key="index"
+        :key="'clone' + index"
         :repo="repo"
       />
-    </section>
+    </repo-section>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
 import Repo from '../components/Work/RepoInfo.vue';
+import RepoSection from '../components/Work/RepoSection.vue';
 
 export default {
-  name: 'WorkList',
+  name: 'Work',
   data() {
     return {
       myRepos: [],
@@ -84,19 +105,23 @@ export default {
   },
   components: {
     Repo,
+    RepoSection,
   },
   mounted() {
-    axios
-      .get('https://api.github.com/users/kavisherlock/repos?sort=pushed')
-      .then((response) => {
-        this.myRepos = response.data
-          .filter((repo) => !repo.fork && !repo.archived);
-      });
+    if (!this.$store.state.repos || this.$store.state.repos.length === 0) {
+      axios
+        .get('https://api.github.com/users/kabbagepatch/repos?sort=pushed&per_page=100')
+        .then((response) => {
+          this.myRepos = response.data.filter((repo) => !repo.fork && !repo.archived);
+          this.$store.commit('updateRepos', { repos: this.myRepos });
+        });
+    } else {
+      this.myRepos = this.$store.state.repos;
+    }
   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .worklist {
     margin-bottom: 50px;
@@ -107,9 +132,7 @@ export default {
   }
 
   p {
-    padding-bottom: 20px;
-    margin-top: -15px;
-    margin-left: 15px;
+    margin-top: -5px;
     color: white;
   }
 

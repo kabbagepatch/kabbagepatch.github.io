@@ -25,11 +25,11 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .repo {
     color: hsl(292, 38%, 92%);
-    padding: 0 15px 20px 15px;
+    margin-top: 10px;
+    padding: 0 15px;
     font-size: 18px;
     line-height: 1.2em;
   }
