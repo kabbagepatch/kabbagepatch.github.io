@@ -1,7 +1,11 @@
 <template>
   <div class="books-container">
     <h2 class="subtext">Yearly Target: 52 Books</h2>
-    <p class="subtext">Old Blog: <a href="https://kavishandbooks.wordpress.com/" target="_blank">Kavish and Books</a></p>
+    <p class="subtext">
+      <a href="https://app.thestorygraph.com/profile/kabbagepatch/" target="_blank">StoryGraph</a>,&nbsp;
+      <a href="https://www.goodreads.com/user/show/88782158-kavi" target="_blank">Goodreads</a>
+    </p>
+    <p class="subtext">Blog: <a href="https://kavibooks.wordpress.com/" target="_blank">Kavi's Books</a></p>
     <BookSection
       v-for="(booksList, index) in books.slice().reverse()"
       :key="2017 + books.length - 1 - index"
@@ -71,6 +75,6 @@ export default {
 
 p.subtext {
   margin-top: -10px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 </style>

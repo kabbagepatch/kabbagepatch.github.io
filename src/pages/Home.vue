@@ -7,10 +7,10 @@
           <h1>About Me</h1>
           <h2>Software Engineer since 2016</h2>
           <h2>Reading since 2017</h2>
-          <h2>Blogging since 2018 <span class='subtext'>(on hiatus)</span></h2>
+          <h2>Blogging since 2018</h2>
           <h2>Gaming since 2020</h2>
           <h2>Have a Cat since 2021</h2>
-          <h2>Watercoloring since 2023</h2>
+          <h2>Making Art since 2023</h2>
         </div>
       </div>
     </div>
@@ -95,7 +95,7 @@ export default {
     margin-left: 100px;
   }
 
-  .about h2:nth-child(3), .about h2:nth-child(5) {
+  .about h2:nth-child(3), .about h2:nth-child(5), .about h2:nth-child(7) {
     margin-left: 200px;
   }
 }
@@ -116,7 +116,7 @@ export default {
     margin-left: 150px;
   }
 
-  .about h2:nth-child(3), .about h2:nth-child(5) {
+  .about h2:nth-child(3), .about h2:nth-child(5), .about h2:nth-child(7) {
     margin-left: 250px;
   }
 }
@@ -146,7 +146,7 @@ export default {
     width: 350px;
   }
 
-  .about h2:nth-child(3), .about h2:nth-child(5) {
+  .about h2:nth-child(3), .about h2:nth-child(5), .about h2:nth-child(7) {
     margin-left: 250px;
   }
 }
@@ -160,7 +160,7 @@ export default {
     margin-left: 100px;
   }
 
-  .about h2:nth-child(3), .about h2:nth-child(5) {
+  .about h2:nth-child(3), .about h2:nth-child(5), .about h2:nth-child(7) {
     margin-left: 180px;
   }
 }

@@ -2,6 +2,7 @@
   <transition enter-active-class="bouncein" leave-active-class="bounceout">
     <div class="book" v-if="this.imageThumbnail">
       <img :src='this.imageThumbnail' :alt='this.bookTitle' />
+      <div class="overlay">{{ this.bookName.replace(/\b[A-Z0-9]{5,}\b/g, '') }}</div>
     </div>
   </transition>
 </template>
@@ -54,6 +55,7 @@ export default {
 
 <style scoped>
   .book {
+    position: relative;
     text-align: center;
     width: auto;
     height: 190px;
@@ -61,6 +63,27 @@ export default {
 
   .book img {
     height: 190px;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    padding: 2rem 0.5rem;
+    margin-left: 1px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .book:hover .overlay {
+    opacity: 1;
   }
 
   .bouncein {

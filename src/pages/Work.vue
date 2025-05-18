@@ -43,6 +43,10 @@
         class="repo"
         :repo="myRepos.filter(repo => repo.name.toLowerCase().includes('jumptorecipe'))[0]"
       />
+      <repo
+        class="repo"
+        :repo="myRepos.filter(repo => repo.name.toLowerCase().includes('feather'))[0]"
+      />
     </repo-section>
     <repo-section title="Old Projects">
       <h3>Machine Learning</h3>

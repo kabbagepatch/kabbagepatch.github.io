@@ -24,9 +24,9 @@
       brownfooter: $route.name === 'AoC',
     }"
   >
-    <p>Designed & developed by <a href="https://twitter.com/kavisherlock">Kavish</a></p>
+    <p>Designed & developed by <a href="https://twitter.com/kavisherlock" target="_blank">Kavish</a></p>
     <p class="credit">
-      Glitchy buttons in the header based on <a href="https://codepen.io/jh3y/pen/PoGbxLp">
+      Glitchy buttons in the header based on <a href="https://codepen.io/jh3y/pen/PoGbxLp" target="_blank">
         https://codepen.io/jh3y/pen/PoGbxLp
       </a>
     </p>
@@ -41,7 +41,7 @@ export default {
   name: 'app',
   data() {
     return {
-      tabs: ['Books', 'Work', 'AoC'],
+      tabs: ['Books', 'Work'],
       apiKey: 'AIzaSyBj6pwMyPi8NVKBybSPJ3WWwGfx3__Nr4I',
     };
   },
@@ -91,7 +91,7 @@ export default {
   footer {
     text-align: center;
     padding: 10px 0 40px 0;
-    min-width: 480px;
+    min-width: 500px;
     height: 70px;
     background: hsla(292, 38%, 92%, 50%);
     color: hsl(331, 86%, 75%);

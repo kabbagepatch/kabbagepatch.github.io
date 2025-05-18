@@ -23,6 +23,11 @@
         </div>
       </transition>
     </div>
+    <div v-if=showBooks>
+      <!-- eslint-disable-next-line -->
+      <p>Disclaimer: The book images above are the first image result from a Google Books Search call on the book title, and therefore might not match the actual book I read</p>
+      <p>Hover/Click the books to display the actual title</p>
+    </div>
     <br />
   </div>
 </template>
@@ -86,6 +91,11 @@ export default {
 
   .rollin {
     animation: rollin 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+  }
+
+  p {
+    margin-bottom: -5px;
+    color: hsl(212, 51%, 31%);
   }
 
   @keyframes rollin {
