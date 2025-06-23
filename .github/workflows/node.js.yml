@@ -32,6 +32,6 @@ jobs:
     - run: cd dist/
     - run: git init
     - run: git add -A
-    - run: git config user.email kavishrmunjal@gmail.com
+    - run: git config user.name "Kavish" && git config user.email kavishrmunjal@gmail.com
     - run: git commit -m 'deploy'
     - run: git log
