@@ -18,8 +18,7 @@ git add -A
 git commit -m 'deploy'
 
 # if you are deploying to https://<USERNAME>.github.io
-git remote set-url origin https://github.com/kabbagepatch/kabbagepatch.github.io.git
-git push -f origin master
+git push -f https://kabbagepatch:kabbagepatch@github.com/kabbagepatch/kabbagepatch.github.io.git master
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
