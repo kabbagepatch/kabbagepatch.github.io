@@ -6,8 +6,6 @@ name: Node.js CI
 on:
   push:
     branches: [ "master-vue" ]
-  pull_request:
-    branches: [ "master-vue" ]
 
 jobs:
   build:
@@ -31,5 +29,4 @@ jobs:
         cache: 'npm'
     - run: yarn install
     - run: git config --global user.name "kabbagepatch" && git config --global user.email kavishrmunjal@gmail.com
-    - run: echo "$GIT_TOKEN"
     - run: ./deploy.sh
