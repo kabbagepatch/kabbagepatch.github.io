@@ -9,8 +9,6 @@ on:
   pull_request:
     branches: [ "master-vue" ]
 
-permissions: write-all
-
 jobs:
   build:
 
@@ -29,5 +27,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: yarn install
-    - run: git config --global user.name "Kavish" && git config --global user.email kavishrmunjal@gmail.com
+    - run: git config --global user.name "kabbagepatch" && git config --global user.email kavishrmunjal@gmail.com
     - run: ./deploy.sh
