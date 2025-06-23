@@ -14,6 +14,9 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+
     strategy:
       matrix:
         node-version: [22.x]
@@ -26,8 +29,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-      env:
-        GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
     - run: yarn install
     - run: git config --global user.name "kabbagepatch" && git config --global user.email kavishrmunjal@gmail.com
     - run: echo "$GIT_TOKEN"
