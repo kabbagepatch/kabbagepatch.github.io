@@ -14,6 +14,10 @@
         </div>
       </div>
     </div>
+    <div class="socials">
+      <h1>Instagram: Mostly Bread and Cats</h1>
+      <div class="elfsight-app-0eabe48e-4875-4306-ab13-e31ac1235450 instagram-feed" data-elfsight-app-lazy></div>
+    </div>
   </div>
 </template>
 
@@ -86,6 +90,15 @@ export default {
 
 .about h2:nth-child(3), .about h2:nth-child(5), .about h2:nth-child(7) {
   margin-left: 350px;
+}
+
+.socials {
+  margin-top: 50px;
+  padding: 20px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 1200px) {
