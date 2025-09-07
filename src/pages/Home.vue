@@ -61,7 +61,6 @@ export default {
       'https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=kabbagepatch.bsky.social',
     );
     const data = await res.json();
-    console.log(data);
     this.allBlueSkyImages = data.feed
       .filter((item) => item.post.embed?.$type === 'app.bsky.embed.images#view')
       .map((item) => ({
@@ -72,7 +71,6 @@ export default {
       }))
       .flatMap((item) => item.images);
     this.blueSkyImages = this.allBlueSkyImages.slice(0, 10);
-    console.log(this.blueSkyImages);
   },
   methods: {
     loadMore() {
