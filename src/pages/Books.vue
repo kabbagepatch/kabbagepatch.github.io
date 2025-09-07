@@ -62,11 +62,15 @@ export default {
 <style scoped>
 .books-container {
   text-align: center;
-  background-color: hsl(202, 20%, 92%);
+  background-color: hsl(209, 70%, 86%);
   width: 100%;
-  padding-top: 10px;
+  padding: 10px 0;
   margin-bottom: 100px;
   min-width: 100px;
+}
+
+h2 {
+  margin-top: 0;
 }
 
 .subtext, .subtext a {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Advent of Code</h1>
-    <div class='wip'><h2>Work in progress</h2></div>
+    <div class='wip'><h2>Projects in progress</h2></div>
     <ul>
       <li
         class="repo"

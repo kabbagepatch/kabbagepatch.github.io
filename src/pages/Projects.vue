@@ -1,7 +1,7 @@
 <template>
   <div class="worklist">
     <div class="github">
-      Projects Available at <a href="https://github.com/kabbagepatch" taget="_blank">https://github.com/kabbagepatch</a>
+      Projects Available at <a href="https://github.com/kabbagepatch" target="_blank">https://github.com/kabbagepatch</a>
     </div>
     <repo-section title="Personal Website (You are here)">
       <repo
@@ -97,11 +97,11 @@
 
 <script>
 import axios from 'axios';
-import Repo from '../components/Work/RepoInfo.vue';
-import RepoSection from '../components/Work/RepoSection.vue';
+import Repo from '../components/Projects/RepoInfo.vue';
+import RepoSection from '../components/Projects/RepoSection.vue';
 
 export default {
-  name: 'Work',
+  name: 'Projects',
   data() {
     return {
       myRepos: [],
@@ -131,17 +131,20 @@ export default {
     margin-bottom: 50px;
   }
 
-  h3 {
-    color: hsl(292, 38%, 92%);
-  }
-
   p {
     margin-top: -5px;
-    color: white;
+    margin-left: 10px;
+    color: hsl(330, 31%, 42%);
+  }
+
+  h3 {
+    margin-top: 10px;
+    font-size: 20px;
   }
 
   .description {
-    color: white;
+    color: hsl(330, 31%, 42%);
+    margin-left: 10px;
     padding: 0 15px 20px 20px;
   }
 
@@ -159,7 +162,13 @@ export default {
     margin-left: -40px;
   }
 
-  .github, .github a {
-    color: white;
+  .github {
+    color: hsl(330, 31%, 42%);
+    margin: 10px;
+    margin-bottom: -10px;
+  }
+
+  .github a {
+    color: hsl(330, 31%, 42%);
   }
 </style>

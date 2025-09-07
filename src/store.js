@@ -21,7 +21,7 @@ export default new Vuex.Store({
     // Books
     bookMap: {},
 
-    // Work
+    // Projects
     repos: [],
   },
   mutations: {
@@ -67,7 +67,7 @@ export default new Vuex.Store({
       state.bookMap[bookName] = { title, imageLink };
     },
 
-    // Work
+    // Projects
     updateRepos(state, data) {
       state.repos = data.repos;
     },

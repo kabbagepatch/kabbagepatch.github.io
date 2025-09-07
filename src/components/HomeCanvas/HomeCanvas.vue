@@ -165,6 +165,9 @@ export default {
 </script>
 
 <style>
+  #my-canvas {
+    width: 100%;
+  }
   #subtext {
     margin-top: -15px;
     color: hsl(300, 64%, 8%);

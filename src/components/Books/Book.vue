@@ -69,7 +69,7 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: hsla(0, 0%, 0%, 0.7);
     color: white;
     display: flex;
     justify-content: center;

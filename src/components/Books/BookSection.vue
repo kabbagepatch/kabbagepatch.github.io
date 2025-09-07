@@ -72,15 +72,15 @@ export default {
     transition: background 0.5s ease-in-out;
     display: flex;
     justify-content: space-between;
-    background-color: hsl(212, 51%, 31%);
-    background-image: -webkit-linear-gradient(45deg, hsl(212, 51%, 31%) 50%, hsl(204, 39%, 35%) 50%);
+    background-color: hsl(209, 50%, 54%);
+    background-image: -webkit-linear-gradient(45deg, hsl(209, 70%, 40%) 50%, hsl(209, 84%, 49%) 50%);
   }
 
   .book-section-header:hover {
     cursor: pointer;
     transition: background 0.5s ease-in-out;
-    background-color: hsl(212, 51%, 41%);
-    background-image: -webkit-linear-gradient(45deg, hsl(212, 51%, 36%) 50%, hsl(204, 39%, 40%) 50%);
+    background-color: hsl(209, 50%, 57%);
+    background-image: -webkit-linear-gradient(45deg, hsl(209, 70%, 44%) 50%, hsl(209, 84%, 52%) 50%);
   }
 
   .book {
@@ -94,6 +94,7 @@ export default {
   }
 
   p {
+    padding: 0 5%;
     margin-bottom: -5px;
     color: hsl(212, 51%, 31%);
   }
@@ -127,6 +128,13 @@ export default {
     100% {
       opacity: 0;
       height: 0;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    .book {
+      width: 45%;
+      margin: 2.5%;
     }
   }
 </style>

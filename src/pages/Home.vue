@@ -5,7 +5,7 @@
       <div class="about-container">
         <div class="about">
           <h1>About Me</h1>
-          <h2>Software Engineer since 2016</h2>
+          <h2>Software Dev since 2016</h2>
           <h2>Reading since 2017</h2>
           <h2>Blogging since 2018</h2>
           <h2>Gaming since 2020</h2>
@@ -67,6 +67,7 @@ export default {
   margin-left: -250px;
   width: 150px;
   background: hsl(335, 99%, 68%);
+  border: 1px solid hsl(292, 38%, 92%);
 }
 
 .about h2 {
@@ -76,6 +77,7 @@ export default {
   margin-left: 250px;
   width: 350px;
   color: hsl(335, 99%, 68%);
+  border: 1px solid hsl(335, 99%, 68%);
 }
 
 .subtext {
@@ -151,17 +153,19 @@ export default {
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
   .about h1 {
-    margin-left: -200px;
+    margin-top: -50px;
+    margin-left: -100px;
   }
 
   .about h2 {
     margin-left: 100px;
+    width: 300px;
   }
 
   .about h2:nth-child(3), .about h2:nth-child(5), .about h2:nth-child(7) {
-    margin-left: 180px;
+    margin-left: 150px;
   }
 }
 </style>

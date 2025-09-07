@@ -1,5 +1,9 @@
 <template>
-  <div class="header">
+  <div class="header" v-bind:class="{
+      pinkGradient: $route.name === 'Home',
+      blueGradient: $route.name === 'Books',
+      greenGradient: $route.name === 'Projects' || $route.name === 'AoC',
+    }">
     <h1 id="title">
       <router-link :to="'/'">
         Kavish
@@ -37,7 +41,21 @@ export default {
 
 <style scoped>
 .header {
+  padding: 0 2%;
   padding-bottom: 20px;
+  background: hsl(291, 37%, 25%);
+}
+
+.pinkGradient {
+  background: linear-gradient(to bottom right, hsl(355, 35%, 28%) 10%, hsl(355, 51%, 48%));
+}
+
+.blueGradient {
+  background: linear-gradient(to bottom right, hsl(212, 51%, 11%) 10%, hsl(204, 36%, 31%));
+}
+
+.greenGradient {
+  background: linear-gradient(to top right, hsl(101, 38%, 29%) 50%, hsl(101, 78%, 39%));
 }
 
 #title {
@@ -90,7 +108,7 @@ ul, ol {
   text-decoration: none;
   display: inline-block;
   padding: 5px 0;
-  height: 40px;
+  height: 55px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
@@ -101,11 +119,25 @@ ul, ol {
 }
 
 #main-menu li a.selected {
-  color: rgb(220, 208, 255);
+  color: hsl(255, 100%, 91%);
 }
 
 #main-menu li a:hover {
   cursor: pointer;
+}
+
+@media screen and (max-width: 450px) {
+  .header {
+    padding-bottom: 30px;
+  }
+
+  #title {
+    font-size: 2em;
+  }
+
+  #main-menu li a {
+    padding: 0;
+  }
 }
 
 </style>

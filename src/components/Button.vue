@@ -49,7 +49,6 @@ export default {
     background: transparent;
     font-size: var(--font-size);
     outline: transparent;
-    letter-spacing: 2px;
     position: relative;
     font-weight: 700;
     border: 0;

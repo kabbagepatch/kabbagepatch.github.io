@@ -4,7 +4,6 @@
       <h3>{{this.title}}</h3>
       <slot />
     </section>
-    <br /><hr />
   </div>
 </template>
 
@@ -22,7 +21,9 @@ export default {
 
 <style scoped>
   h3 {
-    color: hsl(292, 38%, 92%);
+    color: hsl(330, 31%, 42%);
     margin-bottom: 0px;
+    margin-left: 10px;
+    font-size: 24px;
   }
 </style>
