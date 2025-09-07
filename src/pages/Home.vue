@@ -14,9 +14,30 @@
         </div>
       </div>
     </div>
-    <div class="socials">
-      <h1>Instagram: Mostly Bread and Cats</h1>
+    <div class="socials" v-if="blueSkyImages.length > 0">
+      <h2>Instagram Feed: Mostly Bread and Cats</h2>
       <div class="elfsight-app-0eabe48e-4875-4306-ab13-e31ac1235450 instagram-feed" data-elfsight-app-lazy></div>
+      <h2>Blue Sky Feed: Mostly Art</h2>
+      <div class="blue-sky-feed">
+        <div v-for="(image, index) in blueSkyImages" :key="index" class="image-container">
+          <img
+            :src="image.thumb"
+            :alt="image.text || 'Blue Sky Image '+index"
+            style="height: 350px; width: auto;"
+          />
+          <div class="overlay">{{ image.text }}</div>
+        </div>
+        <div
+          v-if="blueSkyImages.length !== allBlueSkyImages.length"
+          class="load-more"
+          @click="loadMore"
+          @keydown="loadMore"
+          role="button"
+          tabindex="0"
+        >
+          L o a d  M o r e
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -28,6 +49,37 @@ export default {
   name: 'HomePage',
   components: {
     HomeCanvas,
+  },
+  data() {
+    return {
+      allBlueSkyImages: [],
+      blueSkyImages: [],
+    };
+  },
+  async mounted() {
+    const res = await fetch(
+      'https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=kabbagepatch.bsky.social',
+    );
+    const data = await res.json();
+    console.log(data);
+    this.allBlueSkyImages = data.feed
+      .filter((item) => item.post.embed?.$type === 'app.bsky.embed.images#view')
+      .map((item) => ({
+        images: item.post.embed.images.map((img) => ({
+          ...img,
+          text: item.post.record.text,
+        })),
+      }))
+      .flatMap((item) => item.images);
+    this.blueSkyImages = this.allBlueSkyImages.slice(0, 10);
+    console.log(this.blueSkyImages);
+  },
+  methods: {
+    loadMore() {
+      const currentLength = this.blueSkyImages.length;
+      const moreImages = this.allBlueSkyImages.slice(currentLength, currentLength + 10);
+      this.blueSkyImages = this.blueSkyImages.concat(moreImages);
+    },
   },
 };
 </script>
@@ -101,6 +153,53 @@ export default {
   flex-direction: column;
 }
 
+.blue-sky-feed {
+  overflow-x: scroll;
+  flex-wrap: nowrap;
+  display: flex;
+}
+
+.image-container {
+  display: flex;
+}
+
+.image-container img {
+  transition: transform 0.3s ease;
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  background: hsla(0, 0%, 0%, 0.7);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2rem 0.5rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-container:hover .overlay {
+  opacity: 1;
+}
+
+.load-more {
+  padding: 0 5px;
+  font-size: 20px;
+  color: hsl(292, 38%, 92%);
+  border: 1px solid hsl(292, 38%, 92%);
+  background: hsl(335, 99%, 68%);
+  height: 350px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 1200px) {
   .about-container {
     padding-left: 5%;
@@ -134,6 +233,10 @@ export default {
   .about h2:nth-child(3), .about h2:nth-child(5), .about h2:nth-child(7) {
     margin-left: 250px;
   }
+
+  .socials h2 {
+    font-size: 24px;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -164,6 +267,11 @@ export default {
   .about h2:nth-child(3), .about h2:nth-child(5), .about h2:nth-child(7) {
     margin-left: 250px;
   }
+
+  .blue-sky-feed {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
 }
 
 @media screen and (max-width: 450px) {
@@ -173,12 +281,12 @@ export default {
   }
 
   .about h2 {
-    margin-left: 100px;
+    margin-left: 60px;
     width: 300px;
   }
 
   .about h2:nth-child(3), .about h2:nth-child(5), .about h2:nth-child(7) {
-    margin-left: 150px;
+    margin-left: 120px;
   }
 }
 </style>

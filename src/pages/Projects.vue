@@ -129,6 +129,7 @@ export default {
 <style scoped>
   .worklist {
     margin-bottom: 50px;
+    padding: 0 20px;
   }
 
   p {

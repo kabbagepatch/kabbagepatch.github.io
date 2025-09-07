@@ -115,7 +115,6 @@ export default {
     font-size: 15px;
     line-height: 1.5;
     margin-bottom: 12px;
-    padding-left: 44px;
     font-family: 'Georgia', serif;
   }
 
@@ -156,10 +155,6 @@ export default {
       flex-direction: column;
       align-items: flex-start;
       gap: 8px;
-    }
-
-    .repo-description {
-      padding-left: 0;
     }
 
     .floral-decoration {
