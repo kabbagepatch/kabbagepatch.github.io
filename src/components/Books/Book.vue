@@ -1,8 +1,14 @@
 <template>
   <transition enter-active-class="bouncein" leave-active-class="bounceout">
     <div class="book" v-if="this.imageThumbnail">
-      <img :src='this.imageThumbnail' :alt='this.bookTitle' />
-      <div class="overlay">{{ this.bookName.replace(/\b[A-Z0-9]{5,}\b/g, '') }}</div>
+      <div class="book-inner">
+        <div class="front">
+          <img :src='this.imageThumbnail' :alt='this.bookTitle' class="book-img"/>
+        </div>
+        <div class="back">
+          {{ this.bookName.replace(/\b[A-Z0-9]{5,}\b/g, '') }}
+        </div>
+      </div>
     </div>
   </transition>
 </template>
@@ -59,31 +65,43 @@ export default {
     text-align: center;
     width: auto;
     height: 190px;
+    background-color: transparent;
+    perspective: 1000px;
   }
 
-  .book img {
+  .book-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  .book:hover .book-inner {
+    transform: rotateY(180deg);
+  }
+
+  .front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+
+  .book-img {
     height: 190px;
   }
 
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: hsla(0, 0%, 0%, 0.7);
+  .back {
+    background-color: hsl(209, 50%, 54%);
+    background-image: -webkit-linear-gradient(45deg, hsl(209, 70%, 40%) 50%, hsl(209, 64%, 49%) 50%);
     color: white;
+    transform: rotateY(180deg);
     display: flex;
     justify-content: center;
     align-items: center;
-    width: auto;
-    padding: 2rem 0.5rem;
-    margin-left: 1px;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .book:hover .overlay {
-    opacity: 1;
   }
 
   .bouncein {
