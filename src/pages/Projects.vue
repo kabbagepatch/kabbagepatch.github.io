@@ -1,175 +1,122 @@
 <template>
-  <div class="worklist">
-    <div class="github">
-      Projects Available at <a href="https://github.com/kabbagepatch" target="_blank">https://github.com/kabbagepatch</a>
+  <div class="home-container">
+    <div class="projects-grid">
+      <p>This page is a Work In Progress</p>
+      <ProjectCard
+        v-for="project in projects"
+        :key="project.title"
+        :title="project.title"
+        :category="project.category"
+        :description="project.description"
+        :technologies="project.technologies"
+        :media="project.media"
+      />
     </div>
-    <repo-section title="Personal Website (You are here)">
-      <repo
-        class="repo"
-        :repo="myRepos.filter(repo => repo.name.toLowerCase().includes('kabbagepatch.github.io'))[0]"
-      />
-    </repo-section>
-    <repo-section title="Games">
-      <repo
-        class="repo"
-        v-for="(repo, index) in myRepos.filter(repo => repo.name.toLowerCase().includes('game'))"
-        :key="'game' + index"
-        :repo="repo"
-      />
-    </repo-section>
-    <repo-section title="KaviBot">
-      <repo
-        class="repo"
-        v-for="(repo, index) in myRepos.filter(repo => repo.name.toLowerCase().includes('kavi')
-         && repo.name.toLowerCase().includes('bot'))"
-        :key="'bot' + index"
-        :repo="repo"
-      />
-    </repo-section>
-    <repo-section title="Trackers">
-      <repo
-        class="repo"
-        v-for="(repo, index) in myRepos.filter(repo => repo.name.toLowerCase().includes('tracker'))"
-        :key="'tracker' + index"
-        :repo="repo"
-      />
-    </repo-section>
-    <repo-section title="Other">
-      <repo
-        class="repo"
-        :repo="myRepos.filter(repo => repo.name.toLowerCase().includes('hex-to-hsl'))[0]"
-      />
-      <repo
-        class="repo"
-        :repo="myRepos.filter(repo => repo.name.toLowerCase().includes('jumptorecipe'))[0]"
-      />
-      <repo
-        class="repo"
-        :repo="myRepos.filter(repo => repo.name.toLowerCase().includes('feather'))[0]"
-      />
-    </repo-section>
-    <repo-section title="Old Projects">
-      <h3>Machine Learning</h3>
-      <repo
-        class="repo"
-        :repo="myRepos.filter(repo => repo.name.toLowerCase().includes('smart-chess'))[0]"
-      />
-      <repo
-        class="repo"
-        :repo="myRepos.filter(repo => repo.name.toLowerCase().includes('chessengine'))[0]"
-      />
-      <repo
-        class="repo"
-        :repo="myRepos.filter(repo => repo.name.toLowerCase().includes('blackjack'))[0]"
-      />
-      <h3>College Projects</h3>
-      <repo
-        class="repo"
-        :repo="{name: 'Emot', description: 'Research project under Bretl Research Group. Implemented interface to control SMA \
-        wires and receive input from various motion and proximity sensors using an Android smartphone and an Arduino. Worked \
-        on making the actuators faster by designing a control system to handle current passing through the SMA'}"
-      />
-      <repo
-        class="repo"
-        :repo="myRepos.filter(repo => repo.name.toLowerCase().includes('prediction'))[0]"
-      />
-      <h3>Playgrounds</h3>
-      <p>Playgrounds are my way to learn various concepts or technologies by applying them
-        in different ways without any specific goal in mind</p>
-      <repo
-        class="repo"
-        v-for="(repo, index) in myRepos.filter(repo => repo.name.toLowerCase().includes('playground'))"
-        :key="'play' + index"
-        :repo="repo"
-      />
-      <h3>Clones</h3>
-      <p>Clones are my way to learn different development frameworks with a specific app to build</p>
-      <repo
-        class="repo"
-        v-for="(repo, index) in myRepos.filter(repo => repo.name.toLowerCase().includes('clone')
-          || repo.name.toLowerCase().includes('client'))"
-        :key="'clone' + index"
-        :repo="repo"
-      />
-    </repo-section>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import Repo from '../components/Projects/RepoInfo.vue';
-import RepoSection from '../components/Projects/RepoSection.vue';
+import ProjectCard from '../components/Projects/ProjectCard.vue';
+import pokemonAssistantAI from '../resources/projects/tauri/pokemon-assistant/ai-assistant.png';
+// import spaceInvaders from '../resources/projects/godot/spaceinvaders.mp4';
+import kavibotDiscord from '../resources/projects/kavibot/discord.gif';
+import kavibotTwitch from '../resources/projects/kavibot/twitch.gif';
+import focusCoffeeCoffee from '../resources/projects/tauri/focus-coffee/coffee.png';
+import spotifyYearlyStats from '../resources/projects/tauri/spotify-explorer/yearly-stats.png';
+
+const projects = [
+  {
+    title: 'Pokemon Assistant',
+    category: 'Tauri Development',
+    description: 'Desktop app that lets users analyze Pokémon type match-ups, manage teams, and leverage AI-'
+                  + 'powered recommendations and chat assistance to determine the best counters against opponent Pokémon.',
+    technologies: ['Tauri', 'Rust', 'Claude'],
+    media: {
+      src: pokemonAssistantAI,
+      alt: 'Pokemon Assistant AI screen',
+      caption: 'AI Assistant.',
+    },
+  },
+  // {
+  //   title: 'Space Invaders',
+  //   category: 'Game Development',
+  //   description: 'Space Invaders game maded using Godot.',
+  //   technologies: ['Godot'],
+  //   media: {
+  //     src: spaceInvaders,
+  //     alt: 'Space Invaders',
+  //   },
+  // },
+  {
+    title: 'Kavibot Discord',
+    category: 'ChatBot',
+    description: 'Discord App with some fun/useful custom commands, including a Valorant battle game, '
+                  + 'reminders and timestamp generator.',
+    technologies: ['Node.js', 'Discord API'],
+    media: {
+      src: kavibotDiscord,
+      alt: 'kavibot Discord commands',
+    },
+  },
+  {
+    title: 'Kavibot Twitch',
+    category: 'ChatBot',
+    description: 'Twitch bot with some fun/useful custom commands, including a in-chat task bot'
+                + ', streamer shoutout commands and more. Task API build using Serverless.',
+    technologies: ['TypeScript', 'Twitch API', 'Serverless'],
+    media: {
+      src: kavibotTwitch,
+      alt: 'kavibot Twitch commands',
+    },
+  },
+  {
+    title: 'Spotify Data Explorer',
+    category: 'Tauri Development',
+    description: 'Desktop app, written in Vue, to analyze Spotify listening history and generate user'
+                  + 'trends from large JSON datasets; additionally includes a custom Spotify player UI.',
+    technologies: ['Vue', 'Tauri', 'TypeScript'],
+    media: {
+      src: spotifyYearlyStats,
+      alt: 'Spotify Data Explorer yearly listening statistics',
+      caption: 'Yearly summary view for larger listening trends and comparisons.',
+    },
+  },
+  {
+    title: 'Focus Coffee',
+    category: 'Tauri Development',
+    description: 'Desktop drink companion and pomodoro timer',
+    technologies: ['Tauri'],
+    media: {
+      src: focusCoffeeCoffee,
+      alt: 'Focus Coffee drink screen',
+      caption: 'A coffee-themed view from the Focus Coffee desktop app.',
+    },
+  },
+];
 
 export default {
-  name: 'Projects',
+  name: 'Home',
+  components: {
+    ProjectCard,
+  },
   data() {
     return {
-      myRepos: [],
+      projects,
     };
-  },
-  components: {
-    Repo,
-    RepoSection,
-  },
-  mounted() {
-    if (!this.$store.state.repos || this.$store.state.repos.length === 0) {
-      axios
-        .get('https://api.github.com/users/kabbagepatch/repos?sort=pushed&per_page=100')
-        .then((response) => {
-          this.myRepos = response.data.filter((repo) => !repo.fork && !repo.archived);
-          this.$store.commit('updateRepos', { repos: this.myRepos });
-        });
-    } else {
-      this.myRepos = this.$store.state.repos;
-    }
   },
 };
 </script>
 
 <style scoped>
-  .worklist {
-    margin-bottom: 50px;
-    padding: 0 20px;
-  }
+.home-container {
+  color: hsl(355, 35%, 28%);
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 2rem 1.25rem 4rem;
+}
 
-  p {
-    margin-top: -5px;
-    margin-left: 10px;
-    color: hsl(330, 31%, 42%);
-  }
-
-  h3 {
-    margin-top: 10px;
-    font-size: 20px;
-  }
-
-  .description {
-    color: hsl(330, 31%, 42%);
-    margin-left: 10px;
-    padding: 0 15px 20px 20px;
-  }
-
-  .description a {
-    color: hsl(335, 72%, 85%);
-  }
-
-  .description a:hover {
-    color: hsl(292, 38%, 92%);
-  }
-
-  .description li {
-    list-style: none;
-    padding: 3px 0;
-    margin-left: -40px;
-  }
-
-  .github {
-    color: hsl(330, 31%, 42%);
-    margin: 10px;
-    margin-bottom: -10px;
-  }
-
-  .github a {
-    color: hsl(330, 31%, 42%);
-  }
+.projects-grid {
+  display: grid;
+  gap: 1.5rem;
+}
 </style>

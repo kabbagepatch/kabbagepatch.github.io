@@ -4,7 +4,7 @@
     v-bind:class="{
       pinkGradient: $route.name === 'Home',
       blueGradient: $route.name === 'Books',
-      greenGradient: $route.name === 'Projects' || $route.name === 'AoC',
+      warmGradient: $route.name === 'Projects' || $route.name === 'AoC',
     }"
   >
     <Header
@@ -20,12 +20,12 @@
   </div>
   <footer
     v-bind:class="{
+      pinkfooter: $route.name === 'Home',
       bluefooter: $route.name === 'Books',
-      brownfooter: $route.name === 'Projects',
-      brownfooter: $route.name === 'AoC',
+      brownfooter: $route.name === 'Projects' || $route.name === 'AoC',
     }"
   >
-    <p>Designed & developed by <a href="https://twitter.com/kavisherlock" target="_blank">Kavish</a></p>
+    <p>Designed & developed by <a href="https://github.com/kabbagepatch" target="_blank">Kavish</a></p>
     <p class="credit">
       Glitchy buttons in the header based on <a href="https://codepen.io/jh3y/pen/PoGbxLp" target="_blank">
         https://codepen.io/jh3y/pen/PoGbxLp
@@ -42,7 +42,7 @@ export default {
   name: 'app',
   data() {
     return {
-      tabs: ['Books', 'Projects'],
+      tabs: ['Projects', 'Books'],
       apiKey: 'AIzaSyBj6pwMyPi8NVKBybSPJ3WWwGfx3__Nr4I',
     };
   },
@@ -74,8 +74,8 @@ export default {
     background: linear-gradient(to bottom right, hsl(212, 51%, 31%) 10%, hsl(204, 36%, 47%));
   }
 
-  .greenGradient {
-    background: linear-gradient(to top right, hsl(101, 38%, 79%) 50%, hsl(101, 78%, 79%));
+  .warmGradient {
+    background: linear-gradient(135deg, hsl(34, 82%, 95%) 0%, hsl(25, 78%, 91%) 50%, hsl(38, 70%, 86%) 100%);
   }
 
   .fade-enter-active,
@@ -93,16 +93,19 @@ export default {
     padding: 10px 0 50px 0;
     width: 100%;
     height: 70px;
+  }
+
+  .pinkfooter {
     background: hsla(292, 38%, 92%, 50%);
     color: hsl(331, 86%, 75%);
   }
 
-  footer a {
+  .pinkfooter a {
     color: hsl(335, 99%, 68%);
   }
 
   .bluefooter {
-    background: hsl(202, 20%, 92%);
+    background: hsl(205, 100%, 88%);
     color: hsl(204, 39%, 55%)
   }
 

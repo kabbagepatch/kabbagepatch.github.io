@@ -174,7 +174,7 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 2rem 0.5rem;
+  padding: 2rem 0;
   text-align: center;
   opacity: 0;
   transition: opacity 0.3s ease;

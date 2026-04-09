@@ -2,7 +2,7 @@
   <div class="header" v-bind:class="{
       pinkGradient: $route.name === 'Home',
       blueGradient: $route.name === 'Books',
-      greenGradient: $route.name === 'Projects' || $route.name === 'AoC',
+      warmGradient: $route.name === 'Projects' || $route.name === 'AoC',
     }">
     <h1 id="title">
       <router-link :to="'/'">
@@ -41,6 +41,14 @@ export default {
 
 <style scoped>
 .header {
+  --header-text: hsl(292, 38%, 92%);
+  --header-text-shadow: hsl(292, 38%, 52%);
+  --header-text-shadow-hover: hsl(292, 38%, 42%);
+  --header-selected: hsl(255, 100%, 91%);
+  --theme-button-primary-hue: 335;
+  --theme-button-primary-lightness: 99;
+  --theme-button-shadow-primary-hue: 320;
+  --theme-button-shadow-secondary-hue: 60;
   padding: 0 2%;
   padding-bottom: 20px;
   background: hsl(291, 37%, 25%);
@@ -48,14 +56,38 @@ export default {
 
 .pinkGradient {
   background: linear-gradient(to bottom right, hsl(355, 35%, 28%) 10%, hsl(355, 51%, 48%));
+  --header-text: hsl(292, 38%, 92%);
+  --header-text-shadow: hsl(292, 38%, 52%);
+  --header-text-shadow-hover: hsl(292, 38%, 42%);
+  --header-selected: hsl(255, 100%, 91%);
+  --theme-button-primary-hue: 335;
+  --theme-button-primary-lightness: 99;
+  --theme-button-shadow-primary-hue: 320;
+  --theme-button-shadow-secondary-hue: 60;
 }
 
 .blueGradient {
   background: linear-gradient(to bottom right, hsl(212, 51%, 11%) 10%, hsl(204, 36%, 31%));
+  --header-text: hsl(196, 73%, 92%);
+  --header-text-shadow: hsl(210, 56%, 44%);
+  --header-text-shadow-hover: hsl(212, 61%, 34%);
+  --header-selected: hsl(191, 100%, 82%);
+  --theme-button-primary-hue: 204;
+  --theme-button-primary-lightness: 79;
+  --theme-button-shadow-primary-hue: 196;
+  --theme-button-shadow-secondary-hue: 48;
 }
 
-.greenGradient {
-  background: linear-gradient(to top right, hsl(101, 38%, 29%) 50%, hsl(101, 78%, 39%));
+.warmGradient {
+  background: linear-gradient(120deg, hsl(12, 37%, 18%) 0%, hsl(21, 44%, 25%) 48%, hsl(30, 54%, 36%) 100%);
+  --header-text: hsl(33, 77%, 90%);
+  --header-text-shadow: hsl(18, 47%, 30%);
+  --header-text-shadow-hover: hsl(16, 54%, 24%);
+  --header-selected: hsl(40, 94%, 80%);
+  --theme-button-primary-hue: 31;
+  --theme-button-primary-lightness: 78;
+  --theme-button-shadow-primary-hue: 18;
+  --theme-button-shadow-secondary-hue: 46;
 }
 
 #title {
@@ -69,8 +101,8 @@ export default {
 
 #title a {
   text-decoration: none;
-  color: hsl(292, 38%, 92%);
-  text-shadow:  4px 4px 3px hsl(292, 38%, 52%);
+  color: var(--header-text);
+  text-shadow: 4px 4px 3px var(--header-text-shadow);
   transition: color 0.5s ease-in-out;
   -moz-transition: color 0.5s ease-in-out;
   -webkit-transition: color 0.5s ease-in-out;
@@ -81,7 +113,7 @@ export default {
 #title a:hover {
   cursor: pointer;
   text-decoration: none;
-  text-shadow:  4px 4px 3px hsl(292, 38%, 42%);
+  text-shadow: 4px 4px 3px var(--header-text-shadow-hover);
 }
 
 ul, ol {
@@ -112,14 +144,27 @@ ul, ol {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
-  color: hsl(292, 38%, 92%);
+  color: var(--header-text);
   transition: color 0.25s ease-in-out, background-color 0.5s ease-in-out;
   -moz-transition: color 0.25s ease-in-out, background-color 0.5s ease-in-out;
   -webkit-transition: color 0.25s ease-in-out, background-color 0.5s ease-in-out;
 }
 
 #main-menu li a.selected {
-  color: hsl(255, 100%, 91%);
+  color: var(--header-selected);
+}
+
+#main-menu li a {
+  --button-primary-hue: var(--theme-button-primary-hue);
+  --button-primary-lightness: var(--theme-button-primary-lightness);
+  --button-color: var(--header-text);
+  --button-shadow-primary-hue: var(--theme-button-shadow-primary-hue);
+  --button-shadow-secondary-hue: var(--theme-button-shadow-secondary-hue);
+  --button-text-shadow: var(--header-text-shadow);
+}
+
+#main-menu li a.selected {
+  --button-color: var(--header-selected);
 }
 
 #main-menu li a:hover {
