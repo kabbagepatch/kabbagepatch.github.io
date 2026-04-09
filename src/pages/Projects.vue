@@ -1,7 +1,6 @@
 <template>
   <div class="home-container">
     <div class="projects-grid">
-      <p>This page is a Work In Progress</p>
       <ProjectCard
         v-for="project in projects"
         :key="project.title"
@@ -17,12 +16,18 @@
 
 <script>
 import ProjectCard from '../components/Projects/ProjectCard.vue';
-import pokemonAssistantAI from '../resources/projects/tauri/pokemon-assistant/ai-assistant.png';
-// import spaceInvaders from '../resources/projects/godot/spaceinvaders.mp4';
+import pokemonAssistant from '../resources/projects/tauri/pokemon-assistant/demo.gif';
+import pong from '../resources/projects/godot/pong.gif';
+import spaceInvaders from '../resources/projects/godot/space-invaders.gif';
+import breakout from '../resources/projects/godot/breakout.gif';
+import bridgesprototype from '../resources/projects/godot/bridgesprototype.gif';
 import kavibotDiscord from '../resources/projects/kavibot/discord.gif';
 import kavibotTwitch from '../resources/projects/kavibot/twitch.gif';
-import focusCoffeeCoffee from '../resources/projects/tauri/focus-coffee/coffee.png';
-import spotifyYearlyStats from '../resources/projects/tauri/spotify-explorer/yearly-stats.png';
+import focusCoffee from '../resources/projects/tauri/focus-coffee/demo.gif';
+import spotifyExplorer from '../resources/projects/tauri/spotify-explorer/demo.gif';
+import vinylTracker from '../resources/projects/web/vinyl-tracker/demo.gif';
+import priorityTracker from '../resources/projects/web/priority-tracker/demo.gif';
+import hexToHSL from '../resources/projects/hex-to-hsl/demo.gif';
 
 const projects = [
   {
@@ -32,26 +37,90 @@ const projects = [
                   + 'powered recommendations and chat assistance to determine the best counters against opponent Pokémon.',
     technologies: ['Tauri', 'Rust', 'Claude'],
     media: {
-      src: pokemonAssistantAI,
-      alt: 'Pokemon Assistant AI screen',
-      caption: 'AI Assistant.',
+      src: pokemonAssistant,
+      alt: 'Pokemon Assistant demo',
     },
   },
-  // {
-  //   title: 'Space Invaders',
-  //   category: 'Game Development',
-  //   description: 'Space Invaders game maded using Godot.',
-  //   technologies: ['Godot'],
-  //   media: {
-  //     src: spaceInvaders,
-  //     alt: 'Space Invaders',
-  //   },
-  // },
+  {
+    title: 'Focus Coffee',
+    category: 'Tauri Development',
+    description: 'Desktop drink companion and pomodoro timer with an added simple task list. '
+                + 'Change themes to match your favourite drink. Sits on top of your windows to help you focus',
+    technologies: ['Tauri'],
+    media: {
+      src: focusCoffee,
+      alt: 'Focus Coffee demo',
+    },
+  },
+  {
+    title: 'Hex to HSL',
+    category: 'Development',
+    description: 'A simple extension that converts any hex and rgb colours in your files to the hsl format, and back to hex',
+    technologies: ['TypeScript'],
+    media: {
+      src: hexToHSL,
+      alt: 'Hex to HSL demo',
+    },
+  },
+  {
+    title: 'Bridges Prototype',
+    category: 'Game Development',
+    description: 'Prototype of a Bridges puzzle game made using Godot. The goal is to '
+                + 'collect wood from tree stumps, and place bridges across rivers to reach the gold. '
+                + 'This is a work in progress',
+    technologies: ['Godot'],
+    media: {
+      src: bridgesprototype,
+      alt: 'Bridges Prototype',
+    },
+  },
+  {
+    title: 'Breakout',
+    category: 'Game Development',
+    description: 'Breakout game made using Godot.',
+    technologies: ['Godot'],
+    media: {
+      src: breakout,
+      alt: 'Breakout',
+    },
+  },
+  {
+    title: 'Space Invaders',
+    category: 'Game Development',
+    description: 'Space Invaders game made using Godot.',
+    technologies: ['Godot'],
+    media: {
+      src: spaceInvaders,
+      alt: 'Space Invaders',
+    },
+  },
+  {
+    title: 'Pong',
+    category: 'Game Development',
+    description: 'Pong game made using Godot.',
+    technologies: ['Godot'],
+    media: {
+      src: pong,
+      alt: 'Pong',
+    },
+  },
+  {
+    title: 'Priority Tracker',
+    category: 'Web Development',
+    description: 'A JIRA-like app I built to track all my projects. You can add and categorize your projects, prioritize'
+                 + ' them. Log tasks to the projects you want to focus on. Move tasks between Active, Up Next and Backlog.'
+                 + 'Developed using Nuxt and Vue.js on the front-end and a Node.js API using Serverless on the backend.',
+    technologies: ['Vue', 'Nuxt.js', 'Serverless'],
+    media: {
+      src: priorityTracker,
+      alt: 'Priority Tracker demo',
+    },
+  },
   {
     title: 'Kavibot Discord',
     category: 'ChatBot',
     description: 'Discord App with some fun/useful custom commands, including a Valorant battle game, '
-                  + 'reminders and timestamp generator.',
+                  + 'reminders that ping you, and a timestamp generator.',
     technologies: ['Node.js', 'Discord API'],
     media: {
       src: kavibotDiscord,
@@ -62,7 +131,7 @@ const projects = [
     title: 'Kavibot Twitch',
     category: 'ChatBot',
     description: 'Twitch bot with some fun/useful custom commands, including a in-chat task bot'
-                + ', streamer shoutout commands and more. Task API build using Serverless.',
+                + ', streamer shoutout and welcome commands and more. Task API build using Serverless.',
     technologies: ['TypeScript', 'Twitch API', 'Serverless'],
     media: {
       src: kavibotTwitch,
@@ -73,23 +142,24 @@ const projects = [
     title: 'Spotify Data Explorer',
     category: 'Tauri Development',
     description: 'Desktop app, written in Vue, to analyze Spotify listening history and generate user'
-                  + 'trends from large JSON datasets; additionally includes a custom Spotify player UI.',
+                  + 'trends from large JSON datasets. Displays your yearly and monthly history, along with'
+                  + ' individual artist and song stats. Additionally includes a custom Spotify player UI'
+                  + ' (which sadly doesn\'t work anymore since Spotify changes their API terms to require'
+                  + ' a Premium subscription',
     technologies: ['Vue', 'Tauri', 'TypeScript'],
     media: {
-      src: spotifyYearlyStats,
-      alt: 'Spotify Data Explorer yearly listening statistics',
-      caption: 'Yearly summary view for larger listening trends and comparisons.',
+      src: spotifyExplorer,
+      alt: 'Spotify Data Explorer demo',
     },
   },
   {
-    title: 'Focus Coffee',
-    category: 'Tauri Development',
-    description: 'Desktop drink companion and pomodoro timer',
-    technologies: ['Tauri'],
+    title: 'Vinyl Tracker',
+    category: 'Web Development',
+    description: 'A web app to track your vinyls catalog and activity.',
+    technologies: ['Vue', 'PWA', 'TypeScript'],
     media: {
-      src: focusCoffeeCoffee,
-      alt: 'Focus Coffee drink screen',
-      caption: 'A coffee-themed view from the Focus Coffee desktop app.',
+      src: vinylTracker,
+      alt: 'Vinyl Tracker demo',
     },
   },
 ];
@@ -110,13 +180,24 @@ export default {
 <style scoped>
 .home-container {
   color: hsl(355, 35%, 28%);
+  max-width: 1800px;
   margin: 0 auto;
-  max-width: 1100px;
   padding: 2rem 1.25rem 4rem;
 }
 
 .projects-grid {
   display: grid;
   gap: 1.5rem;
+  grid-template-columns: auto auto;
+}
+
+@media screen and (max-width: 1500px) {
+  .home-container {
+    max-width: 1100px;
+  }
+
+  .projects-grid {
+    grid-template-columns: auto;
+  }
 }
 </style>
