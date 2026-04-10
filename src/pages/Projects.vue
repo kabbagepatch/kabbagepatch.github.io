@@ -1,5 +1,8 @@
 <template>
-  <div class="home-container">
+  <div class="container">
+    <h3 class="header">Check out more of my work on my Github
+      <a class="link" href="https://github.com/kabbagepatch" target="_blank">@kabbagepatch</a>
+    </h3>
     <div class="projects-grid">
       <ProjectCard
         v-for="project in projects"
@@ -7,6 +10,7 @@
         :title="project.title"
         :category="project.category"
         :description="project.description"
+        :link="project.link"
         :technologies="project.technologies"
         :media="project.media"
       />
@@ -33,6 +37,7 @@ const projects = [
   {
     title: 'Pokemon Assistant',
     category: 'Tauri Development',
+    link: 'http://pokemon-ai.netlify.app/',
     description: 'Desktop app that lets users analyze Pokémon type match-ups, manage teams, and leverage AI-'
                   + 'powered recommendations and chat assistance to determine the best counters against opponent Pokémon.',
     technologies: ['Tauri', 'Rust', 'Claude'],
@@ -44,7 +49,8 @@ const projects = [
   {
     title: 'Focus Coffee',
     category: 'Tauri Development',
-    description: 'Desktop drink companion and pomodoro timer with an added simple task list. '
+    link: 'http://focus-coffee.netlify.app/',
+    description: 'Desktop drink companion and pomodoro timer with an additional simple task list. '
                 + 'Change themes to match your favourite drink. Sits on top of your windows to help you focus',
     technologies: ['Tauri'],
     media: {
@@ -55,6 +61,7 @@ const projects = [
   {
     title: 'Hex to HSL',
     category: 'Development',
+    link: 'https://marketplace.visualstudio.com/items?itemName=kavish.hex-to-hsl',
     description: 'A simple extension that converts any hex and rgb colours in your files to the hsl format, and back to hex',
     technologies: ['TypeScript'],
     media: {
@@ -107,6 +114,7 @@ const projects = [
   {
     title: 'Priority Tracker',
     category: 'Web Development',
+    link: 'https://prioritytracker.netlify.app/',
     description: 'A JIRA-like app I built to track all my projects. You can add and categorize your projects, prioritize'
                  + ' them. Log tasks to the projects you want to focus on. Move tasks between Active, Up Next and Backlog.'
                  + 'Developed using Nuxt and Vue.js on the front-end and a Node.js API using Serverless on the backend.',
@@ -142,10 +150,10 @@ const projects = [
     title: 'Spotify Data Explorer',
     category: 'Tauri Development',
     description: 'Desktop app, written in Vue, to analyze Spotify listening history and generate user'
-                  + 'trends from large JSON datasets. Displays your yearly and monthly history, along with'
+                  + ' trends from large JSON datasets. Displays your yearly and monthly history, along with'
                   + ' individual artist and song stats. Additionally includes a custom Spotify player UI'
                   + ' (which sadly doesn\'t work anymore since Spotify changes their API terms to require'
-                  + ' a Premium subscription',
+                  + ' a Premium subscription)',
     technologies: ['Vue', 'Tauri', 'TypeScript'],
     media: {
       src: spotifyExplorer,
@@ -155,7 +163,8 @@ const projects = [
   {
     title: 'Vinyl Tracker',
     category: 'Web Development',
-    description: 'A web app to track your vinyls catalog and activity.',
+    link: 'https://vinylstracker.netlify.app/',
+    description: 'A progressive web app to track your vinyls catalog and activity. Powered by the Discogs API',
     technologies: ['Vue', 'PWA', 'TypeScript'],
     media: {
       src: vinylTracker,
@@ -178,7 +187,7 @@ export default {
 </script>
 
 <style scoped>
-.home-container {
+.container {
   color: hsl(355, 35%, 28%);
   max-width: 1800px;
   margin: 0 auto;
@@ -191,8 +200,17 @@ export default {
   grid-template-columns: auto auto;
 }
 
+.header {
+  margin-top: 0;
+}
+
+.link {
+  color: hsl(13, 42%, 24%);
+  text-decoration: none;
+}
+
 @media screen and (max-width: 1500px) {
-  .home-container {
+  .container {
     max-width: 1100px;
   }
 

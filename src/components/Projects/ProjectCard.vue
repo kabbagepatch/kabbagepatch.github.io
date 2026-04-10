@@ -2,8 +2,9 @@
   <article class="project-card">
     <div class="project-header">
       <p v-if="category" class="project-category"> {{ category }} </p>
-      <h3 class="project-title"> {{ title }} </h3>
+      <h3 class="project-title"> {{ title }}</h3>
       <p v-if="description" class="project-description"> {{ description }} </p>
+      <a v-if="link" :href="link" target="_blank" class="project-link">Check it out here ↗</a>
 
       <ul v-if="technologies.length" class="technology-list">
         <li v-for="technology in technologies" :key="technology" class="technology-pill"> {{ technology }} </li>
@@ -60,6 +61,10 @@ export default {
       type: String,
       default: '',
     },
+    link: {
+      type: String,
+      default: '',
+    },
     technologies: {
       type: Array,
       default: () => [],
@@ -110,7 +115,7 @@ export default {
   color: hsl(17, 41%, 20%);
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: minmax(0, 1.4fr) minmax(260px, 2fr);
+  grid-template-columns: minmax(0, 1.5fr) minmax(260px, 2fr);
   align-items: center;
   padding: 1.75rem;
 }
@@ -132,6 +137,11 @@ export default {
   color: hsl(13, 42%, 24%);
   font-size: clamp(1.6rem, 2vw, 2.2rem);
   margin: 0;
+}
+
+.project-link {
+  color: hsl(13, 42%, 24%);
+  text-decoration: underline;
 }
 
 .project-description {
