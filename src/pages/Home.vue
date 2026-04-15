@@ -5,12 +5,12 @@
       <div class="about-container">
         <div class="about">
           <h1>About Me</h1>
-          <h2>Software Dev since 2016</h2>
+          <h2>Making Software since 2016</h2>
           <h2>Reading since 2017</h2>
           <h2>Blogging since 2018</h2>
           <h2>Gaming since 2020</h2>
-          <h2>Have a Cat since 2021</h2>
           <h2>Making Art since 2023</h2>
+          <h2>Baking Sourdough since 2025</h2>
         </div>
       </div>
     </div>
