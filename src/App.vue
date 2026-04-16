@@ -43,7 +43,7 @@ export default {
   data() {
     return {
       tabs: ['Projects', 'Books'],
-      apiKey: 'AIzaSyBj6pwMyPi8NVKBybSPJ3WWwGfx3__Nr4I',
+      apiKey: process.env.VUE_APP_GOOGLE_API_KEY,
     };
   },
   components: {
